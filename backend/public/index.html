@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artesanías Elen Vicco</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/gallery.css">
+    <link rel="stylesheet" href="./css/contact.css">
+</head>
+
+<body>
+
+    <header class="topheader">
+        <nav class="topnav">
+            <a href="#" class="logo">
+                <img height="50px" width="50px" src="img/logo.jpeg" alt="logo">
+                <div>
+                    Handicrafts <br>
+                    Elena Vico
+                </div>
+            </a>
+            <button class="open-menu" aria-label="Abrir menú">
+                <img width="25px" src="img/hamburger-2-svgrepo-com.svg" alt="">
+            </button>
+            <ul class="menu">
+                <button class="close-menu" aria-label="Cerrar menú">
+                    <img width="25px" src="img/close-white.svg" alt="">
+                </button>
+                <li><a href="#home" class="selected">Inicio</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#about">Acerca de Mi</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="horizontal-padding vertical-padding">
+
+        <section id="home" class="home">
+
+            <div class="home-info">
+
+                <h1 class="home-title">Bienvenido a mi mundo de artesanías</h1>
+
+                <p class="home-details">¡Hola! Soy Elena Vico, una entusiasta creadora de artesanías, explorando el
+                    maravilloso mundo de la resina epoxi, el fimo y otros materiales. Aunque estoy dando mis primeros
+                    pasos en este viaje creativo, mi pasión por el arte y las manualidades es lo que impulsa cada una de
+                    mis creaciones.</p>
+
+                <p class="home-details">Te invito a explorar mi galería de trabajos y a seguirme en mis redes sociales
+                    para ver mis últimas creaciones y proyectos. Estoy emocionada de compartir este viaje contigo y
+                    espero que disfrutes de mis piezas tanto como yo disfruto creándolas. ¡Gracias por tu apoyo y por
+                    acompañarme en este camino!</p>
+
+                <!-- <a href="#gallery" class="home-btn">Explora la Galería</a> -->
+
+            </div>
+
+            <span class="home-img-section">
+                <img class="home-img" src="img/artist.jpeg" alt="Artist image">
+                <!-- <div class="home-img-line"></div> -->
+            </span>
+
+        </section>
+
+    </div>
+
+    <section id="gallery">
+        <!-- Imágenes de trabajos -->
+        <div class="gallerys" id="gallerys">
+            <img class="wave" src="img/wave.svg" alt="división">
+            <div class="gallerys-body">
+                <h2 class="gallerys-title">
+                    Galería de Trabajos
+                </h2>
+
+            </div><!-- gallery-body -->
+            <img class="wave wave_botton" src="img/wave.svg" alt="división">
+        </div><!-- gallerys -->
+    </section>
+
+    <section id="about">
+        <h2>Sobre mí</h2>
+
+        <h2>Mi Proceso Creativo</h2>
+        <p>Cada creación es una nueva aventura para mí. Desde seleccionar los materiales hasta el producto final,
+            disfruto cada paso del proceso. Utilizo resina epoxi para lograr efectos brillantes y duraderos y fimo para
+            moldear figuras detalladas y coloridas. A medida que continúo aprendiendo y experimentando, mi objetivo es
+            mejorar constantemente y ofrecer algo único.</p>
+
+    </section>
+
+    <div class="horizontal-padding vertical-padding">
+        <section class="contact" id="contact">
+            <h2 class="contact-title">Contacto</h2>
+            <div class="contact-details">
+<!--                 <div class="contact-details-group">
+                    <p class="contact-label">Dirección:</p>
+                    <p class="contact-text">Sevilla, España</p>
+                </div>
+                <div class="contact-details-group">
+                    <p class="contact-label">Email:</p>
+                    <p class="contact-text">elenadv27@gmail.com</p>
+                </div> -->
+                <div class="contact-details-group">
+                    <p class="contact-text">Gracias por tu interés en mi trabajo. Aunque aún no estoy vendiendo
+                        mis creaciones, me encantaría escuchar tus comentarios, ideas y cualquier pregunta que puedas
+                        tener. Si te interesa una pieza personalizada o simplemente quieres saber más sobre mi proceso
+                        creativo, no dudes en ponerte en contacto conmigo. Estoy aquí para compartir mi pasión por las
+                        artesanías y conectar con personas que aprecian el arte tanto como yo.
+
+                        Por favor, completa el formulario a continuación y me pondré en contacto contigo lo antes
+                        posible. ¡Gracias por tu apoyo y por ser parte de esta emocionante aventura!</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="contact-form-group">
+                    <label for="name">Nombre</label>
+                    <input required type="text" name="name" id="name">
+                </div>
+                <div class="contact-form-group">
+                    <label for="email">Email</label>
+                    <input required type="email" name="email" id="email">
+                </div>
+                <div class="contact-form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea required name="message" id="message" rows="6"></textarea>
+                </div>
+
+                <button type="submit" class="contact-form-submit">Enviar</button>
+            </form>
+
+            <nav class="social">
+                <ul class="social-list">
+                    <li><a href="#"><img src="img/linkedin-161-svgrepo-com.svg" alt="Linkedin"></a></li>
+                    <li><a href="#"><img src="img/facebook-social-media-svgrepo-com.svg" alt="facebook"></a></li>
+                    <li><a href="#"><img src="img/youtube-play-svgrepo-com.svg" alt="youtube"></a></li>
+                    <li><a href="#"><img src="img/twitter-svgrepo-com.svg" alt="twiter"></a></li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Handicrafts Elena Vico.</p>
+    </footer>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

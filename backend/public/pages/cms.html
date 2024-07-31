@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/cms.css">
+    <title>CMS</title>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="lateral-menu visible" id="menu-lateral">
+            <nav class="lateral-nav">
+                <a href="#" class="logo">
+                    <img height="50px" width="50px" src="img/logo.jpeg" alt="logo">
+                    <div>
+                        Handicrafts <br>
+                        Elena Vico
+                    </div>
+                </a>
+                <div class="title-menu">
+                    <p> CMS </p>
+                </div>
+                <ul class="menu">
+                    <li><a href="#"><img class="img1" src="../img/svg/gallery.svg" alt=""><img class="img2" src="../img/svg/galleryover.svg" alt=""> Productos</a></li>
+                    <li><a href="#"><img class="img1" src="../img/svg/user.svg" alt=""><img class="img2" src="../img/svg/user_hover.svg" alt=""> Usuarios</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content shifted" id="content">
+            <button id="toggle-menu">☰</button>
+            <div class="stats">
+                <table id="stats-table" border="1">
+                    <thead>
+                      <tr>
+                        <th onclick="sortTable(0)">Página <span class="sort-icon" id="icon-0"></span></th>
+                        <th onclick="sortTable(1)">Visitas <span class="sort-icon" id="icon-1"></span></th>
+                        <th onclick="sortTable(2)">Última Visita <span class="sort-icon" id="icon-2"></span></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!--  Las filas se añadirán dinámicamente aquí  -->
+                    </tbody>
+                  </table>
+            </div>
+            <div class="crafts-view"></div>
+            <div class="users view"></div>
+        </div>
+
+    </div>
+
+<!--     <div class="container">
+        <div class="sidebar lateral-menu" id="sidebar">
+          <h2>Menú Lateral</h2>
+          <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+          </ul>
+        </div>
+        <div class="content">
+          <button id="toggleButton">toggle-menu</button>
+          <h1>Contenido Principal</h1>
+          <p>Este es el contenido principal de la página.</p>
+        </div>
+      </div> -->
+
+     <script src="../js/cms.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+:root{
+    
+    /* Basic color */
+    --theme-color:white;
+    --primary-color:#124f88;
+    --secondary-color:#F7c331;
+    --navbar-shadow-color: #e5e5e5;
+    
+    /* text */
+    --text-color:black;
+    --text-color-inverse:white;
+    
+    /* buttons */
+    --btn-background-color: #124f88;
+
+    /* mobile */
+    --menu-mobile-background-color:  #333;
+
+    /* fonts */
+    --font-primary:Arial, sans-serif;
+
+    /* cms */
+    
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+section[id]{
+   scroll-margin-top: 70px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--theme-color);
+    color: var(--text-color);
+    padding-top: 70px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.horizontal-padding{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.vertical-padding{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+@media (min-width: 750px) {
+    
+    .horizontal-padding{
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+    
+    .vertical-padding{
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+}
+

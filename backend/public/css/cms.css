@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    height: 100%;
+}
+
+.lateral-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    height: 100%; /* Asegura que cubra toda la altura de la ventana */
+    background-color: var(--menu-mobile-background-color);
+    padding-top: 20px; /* Ajusta el relleno superior según sea necesario */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.lateral-menu.visible {
+    transform: translateX(0);
+}
+
+.lateral-menu li {
+    list-style-type: none; /* Elimina las viñetas de la lista */
+    padding: 10px;
+    text-align: center; /* Centra el texto de los elementos del menú */
+}
+
+/* Estilos para el botón */
+#toggle-menu {
+    position: absolute; 
+    top: 10px;
+    left: 10px;
+    background-color:var(--menu-mobile-background-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+    border-radius: 20px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+#toggle-menu:hover {
+    background-color: grey;
+}
+
+.logo {
+    margin-top: 50px;
+    margin-left: 20px;
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    align-items: center;
+    color: antiquewhite;
+}
+
+.logo div {
+    margin-left: 10px;
+}
+
+.logo img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.title-menu {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: antiquewhite;
+}
+
+.menu {
+    margin-top: 20px;
+}
+
+.menu a {
+    color: antiquewhite;
+    position: relative;
+}
+
+.menu a img{
+    width: 25px;
+}
+
+.menu a .img2 {
+    display: none;
+}
+
+.menu a::after {
+    content: "";
+    background-color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    top: calc(100% + 4px);
+    width: 100%;
+    height: 4px;
+    opacity: 0;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.menu a.selected::after,
+.menu a:hover::after{
+    opacity: 0.8;
+}
+
+.menu a:hover {
+   transform: translateX(10px);
+   -webkit-transform: translateX(10px);
+   -moz-transform: translateX(10px);
+   -ms-transform: translateX(10px);
+   -o-transform: translateX(10px);
+
+   transition: 0.5s;
+   -webkit-transition: 0.5s;
+   -moz-transition: 0.5s;
+   -ms-transition: 0.5s;
+   -o-transition: 0.5s;
+}
+
+.menu a:hover .img1 {
+    display: none;
+}
+
+.menu a:hover .img2 {
+    display: inline;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    margin-left: 0; /* Ajuste inicial */
+  }
+
+  #content.shifted {
+    margin-left: 250px; /* Desplaza el contenido cuando el menú está visible */
+  }
+
+/* Estilos para los iconos de ordenación */
+.sort-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    background-size: contain;
+}
+
+.sort-asc {
+    background-image: url('../img/svg/ascend.svg'); /* URL del icono de flecha ascendente */
+}
+
+.sort-desc {
+    background-image: url('../img/svg/descend.svg'); /* URL del icono de flecha descendente */
+}
+
+#stats-table {
+    width: 100%;
+    border: 1px solid #999;
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 0 1em 0;
+}
+
+#stats-table td, th {
+    border-bottom: 1px solid #999;
+    width: 25%;
+}
