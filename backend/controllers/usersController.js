@@ -1,17 +1,21 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { sendSuccess } = require('../helpers/responses');
+const { validateError,userError,connectionError,serverError } = require('../helpers/customErrors');
+const userService = require('../services/userService');
 
-exports.getAllUsers = async (req, res) => {
+exports.getAllUsers = async (req, res,next) => {
 
     try {
         const users = await User.findAll();
 
-        res.status(200).json(users);
+        sendSuccess(res,users,'Get All users ok',200);
 
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Error en el servidor');
+
+        next(new serverError('Failed to get users',500));
+
     }
 
 };
@@ -38,22 +42,27 @@ exports.deleteUser = async (req, res) => {
     });
 };
 
-exports.register = async (req, res) => {
-    const { username, email, password } = req.body;
+exports.register = async (req, res, next) => {
+
+    const { password, username, email } = req.body;
+
+    if (!username) return next(new userError('Not a valid username', 400));
+    if (!email) return next(new userError('Not a valid email', 400));
+    if (!password) return next(new userError('Not a valid password', 400));
+
     try {
-        let user = await User.findOne({ where: { email } });
-        if (user) {
-            return res.status(400).json({ msg: 'El usuario ya existe' });
-        }
-        user = await User.create({
-            username,
-            email,
-            password
-        });
-        res.status(201).json({ msg: 'Usuario registrado correctamente' });
+        // Llamada al servicio para registrar al usuario
+        const user = await userService.registerUser({ username, email, password });
+
+        // Responder con éxito
+        sendSuccess(res, user, 'User registration successful', 201);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Error en el servidor');
+        if (err instanceof userError) {
+            return next(err); // Pasar el error de usuario al middleware de error
+        }
+        
+        // Manejo de errores del servidor
+        next(new serverError('Internal error trying to register user', 500));
     }
 };
 
@@ -75,7 +84,7 @@ exports.login = async (req, res) => {
         };
         jwt.sign(
             payload,
-            'mysecretkey', // Debe ser un secreto fuerte en producción
+            process.env.JWT_SECRET, // Debe ser un secreto fuerte en producción
             { expiresIn: '1h' },
             (err, token) => {
                 if (err) throw err;

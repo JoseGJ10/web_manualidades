@@ -16,6 +16,9 @@ const User = sequelize.define('User', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, {
     hooks: {
@@ -25,5 +28,9 @@ const User = sequelize.define('User', {
         }
     }
 });
+
+User.associate = function(models) {
+    User.belongsToMany(models.Role, { through: 'UserRole' });
+}
 
 module.exports = User;

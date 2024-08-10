@@ -2,10 +2,12 @@ const express = require('express');
 const path = require('path');
 const sequelize = require('../config/database');
 const visitCounter = require('../middleware/stats');
-
+const errorHandler = require('../middleware/errorMiddleware');
+const requestLoggerMiddleware = require('../middleware/requestLoggerMiddleware');
 
 class Server {
     constructor() {
+
         this.app = express();
         this.port = process.env.PORT || 3000;
 
@@ -20,6 +22,8 @@ class Server {
 
         // Config routes
         this.routes();
+
+        this.errorHandling();
     }
 
     async connectDB() {
@@ -43,6 +47,7 @@ class Server {
         // Middleware para servir archivos estáticos
         this.app.use(express.json());
         this.app.use(visitCounter);
+        this.app.use(requestLoggerMiddleware); // Aplica el middleware del requestLogger
         this.app.use(express.static(path.join(__dirname, '../public')));
         this.app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
         this.app.use('/css', express.static(path.join(__dirname, '../public/css')));
@@ -66,9 +71,13 @@ class Server {
 
     }
 
+    errorHandling() {
+        this.app.use(errorHandler); // Usa el middleware de manejo de errores
+    }
+
     //Init Server
     listen() {
-        sequelize.sync({alter: false}).then(()=> {
+        sequelize.sync({alter: true}).then(()=> {
             this.app.listen(this.port, () => {
                 console.log(`Server Run in http://localhost:${this.port}`);
             });
