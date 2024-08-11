@@ -1,8 +1,8 @@
-const UserService = require('../services/userService'); 
-const User = require('../models/user'); // Mockearemos este modelo
-const { userError } = require('../helpers/customErrors'); 
+const UserService = require('../../services/userService'); 
+const User = require('../../models/user'); // Mockearemos este modelo
+const { userError } = require('../../helpers/customErrors'); 
 
-jest.mock('../models/user'); // Automáticamente mockea todas las funciones de User
+jest.mock('../../models/user'); // Automáticamente mockea todas las funciones de User
 
 describe('UserService', () => {
 
@@ -63,6 +63,44 @@ describe('UserService', () => {
                 username: 'testuser',
                 email: 'test@example.com',
                 password: 'password123'
+            });
+        });
+    });
+
+    describe('getAllUsers', () => {
+        it('should retrieve all users excluding passwords', async () => {
+            // Datos mock para simular la respuesta de User.findAll
+            const mockUsers = [
+                { id: 1, username: 'user1', email: 'user1@example.com' },
+                { id: 2, username: 'user2', email: 'user2@example.com' }
+            ];
+    
+            // Configura el mock para que devuelva los datos mock
+            User.findAll.mockResolvedValue(mockUsers);
+    
+            // Llama al método que deseas probar
+            const users = await UserService.getAllUsers();
+    
+            // Verifica que User.findAll se haya llamado con los parámetros correctos
+            expect(User.findAll).toHaveBeenCalledWith({
+                attributes: { exclude: ['password'] }
+            });
+    
+            // Verifica que el resultado sea el esperado
+            expect(users).toEqual(mockUsers);
+        });
+    
+        it('should handle errors properly', async () => {
+            // Configura el mock para que lance un error
+            const error = new Error('Database error');
+            User.findAll.mockRejectedValue(error);
+    
+            // Intenta capturar el error que debe ser lanzado por el método
+            await expect(UserService.getAllUsers()).rejects.toThrow('Database error');
+    
+            // Verifica que User.findAll se haya llamado con los parámetros correctos
+            expect(User.findAll).toHaveBeenCalledWith({
+                attributes: { exclude: ['password'] }
             });
         });
     });
