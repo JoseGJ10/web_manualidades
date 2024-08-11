@@ -23,6 +23,16 @@ class UserService {
 
         return { username, email };
     }
+
+    async getAllUsers() {
+        
+        let users = await User.findAll( { attributes: { exclude: ['password'] } } );
+
+        return users;
+    }
+
+
+
 }
 
 module.exports = new UserService();
