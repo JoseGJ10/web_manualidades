@@ -8,7 +8,7 @@ const userService = require('../services/userService');
 exports.getAllUsers = async (req, res,next) => {
 
     try {
-        const users = await User.findAll();
+        const users = await userService.getAllUsers();
 
         sendSuccess(res,users,'Get All users ok',200);
 
