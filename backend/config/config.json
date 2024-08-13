@@ -1,0 +1,20 @@
+{
+    "test": {
+        "dialect": "sqlite",
+        "storage": ":memory:"
+    },
+    "development": {
+        "dialect": "mysql",
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "my_database_dev"
+    },
+    "production": {
+        "dialect": "mysql",
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "my_database_prod"
+    }
+}
